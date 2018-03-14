@@ -1,0 +1,50 @@
+<!-- <ng-container *ngIf="user.isLogin; else guest"> -->
+<!-- <div *ngFor="let prod of productList">
+  <app-product [product]="prod"></app-product>
+</div> -->
+<!-- </ng-container> -->
+<!-- <ng-template #guest>
+  <div>
+    <app-product></app-product>
+  </div>
+</ng-template> -->
+<nav class="product-filter">
+  <h2>Popular products</h2>
+  <div class="sort">
+    <div class="collection-sort">
+      <label>Filter by:</label>
+      <select>
+        <option value="/">All Jackets</option>
+      </select>
+    </div>
+    <div class="collection-sort">
+      <label>Sort by:</label>
+      <select>
+        <option value="/">Featured</option>
+      </select>
+    </div>
+  </div>
+</nav>
+<section class="products">
+  <div *ngFor="let prod of productList" class="product-card">
+      <app-product [product]="prod"></app-product>
+  </div>
+</section>
+<style>
+  .product-filter {
+    display: flex;
+  }
+
+  .product-filter h2 {
+    flex-grow: 1;
+  }
+
+  .sort {
+    display: flex;
+  }
+
+  .collection-sort {
+    display: flex;
+    flex-direction: column;
+  }
+</style>

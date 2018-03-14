@@ -1,0 +1,28 @@
+<ng-container *ngIf="view=='default'; else countView">
+    <h1>
+        {{productListInCart.length}}
+    </h1>
+</ng-container>
+<ng-template #countView>
+    <ng-container *ngIf="view === 'countView';else smallView">
+        <a>
+            <img style="width: 60px;
+                        height: auto;
+                        margin-top: 30px;
+                        margin-right: 30px;" src="assets/img/minicart.png">
+            <h4 style="position: relative;
+                        bottom: 43px;
+                        left: 28px;
+                        font-size: 10pt;" [hidden]="productListInCart.length==0">{{productListInCart.length}}</h4>
+        </a>
+    </ng-container>
+</ng-template>
+<ng-template #smallView>
+    <ng-container>
+        <h5>Small View</h5>
+        <h4 style="position: relative;
+                            bottom: 43px;
+                            left: 28px;
+                            font-size: 10pt;" [hidden]="productListInCart.length==0">{{productListInCart.length}}</h4>
+    </ng-container>
+</ng-template>

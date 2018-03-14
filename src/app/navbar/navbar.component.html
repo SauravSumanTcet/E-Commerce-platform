@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <span>{{app.appName | uppercase}}</span>
+    <span class="example-spacer"></span>
+
+    <app-cart [view]="'countView'" (click)="cartSmallViewVisible = true"></app-cart>
+    <app-cart [view]="'smallView'" *ngIf="cartSmallViewVisible"></app-cart>
+    <ng-container *ngIf="(currentUser.isLogin); else guest">
+      <h5>Hi {{currentUser.firstName}}</h5>
+      <button mat-raised-button color="primary" (click)="dal.logout()">Logout</button>
+    </ng-container>
+    <ng-template #guest>
+      <button mat-raised-button color="primary" (click)="openDialog()">Login</button>
+    </ng-template>
+  </mat-toolbar-row>
+</mat-toolbar>
