@@ -6,6 +6,9 @@ import { LoginComponent } from '../login/login.component';
 import { DbAbstractionLayer } from '../dal/db-abstraction-layer';
 import { User } from '../model/user';
 import { CommonService } from '../dal/common.service';
+import { CartService } from '../dal/cart.service';
+import { Subscription } from 'rxjs';
+import { Product } from '../model/index';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +18,12 @@ import { CommonService } from '../dal/common.service';
 export class NavbarComponent implements OnInit {
   currentUser: User;
   cartSmallViewVisible: boolean = false;
-  constructor(private app: AppService, private dal: DbAbstractionLayer, public dialog: MatDialog, private commonService: CommonService) {
+  private productAddedSubs: Subscription;
+  productListInCart: Product[] = [];
+
+  constructor(private app: AppService, private cartService: CartService, private dal: DbAbstractionLayer, public dialog: MatDialog, private commonService: CommonService) {
+    this.productListInCart = this.cartService.productListInCart;
+
     dal.isUserIn().subscribe(user => {
       console.log(user);
       this.currentUser = user;
@@ -25,7 +33,11 @@ export class NavbarComponent implements OnInit {
       if (data == 'closeCart')
         if (this.cartSmallViewVisible)
           this.cartSmallViewVisible = false;
-    })
+    });
+
+    this.productAddedSubs = this.cartService.productSub$.subscribe(data => {
+      this.productListInCart = this.cartService.productListInCart;
+    });
   }
   openDialog(): void {
     let dialogRef = this.dialog.open(LoginComponent, { hasBackdrop: false });
@@ -44,7 +56,7 @@ export class NavbarComponent implements OnInit {
   }
   @HostListener("click", ["$event"])
   public onClick(event: any): void {
-   console.log("navbar click");
+    console.log("navbar click");
     event.stopPropagation();
   }
 }

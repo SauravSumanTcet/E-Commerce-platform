@@ -3,10 +3,15 @@
     <span>{{app.appName | uppercase}}</span>
     <span class="example-spacer"></span>
 
-    <app-cart [view]="'countView'" (click)="cartSmallViewVisible = true"></app-cart>
-    <app-cart [view]="'smallView'" *ngIf="cartSmallViewVisible"></app-cart>
+    <a routerLink="/cart" routerLinkActive="active">
+      <i fa [name]="'shopping-bag'" [size]="2" [pull]="'left'"></i>
+      <span class="item-count" [hidden]="productListInCart.length==0">{{productListInCart.length}}</span>
+    </a>
+
+
     <ng-container *ngIf="(currentUser.isLogin); else guest">
-      <h5>Hi {{currentUser.firstName}}</h5>
+      <i fa [name]="'user-circle'"></i> &nbsp;
+      <h5>{{currentUser.firstName}}</h5> &nbsp;
       <button mat-raised-button color="primary" (click)="dal.logout()">Logout</button>
     </ng-container>
     <ng-template #guest>

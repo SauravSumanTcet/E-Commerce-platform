@@ -7,27 +7,25 @@ import { CartService } from '../dal/cart.service';
     templateUrl: './product.component.html',
     styleUrls: ['product.component.scss']
 })
-export class ProductComponent
-// implements OnChanges 
-{
+export class ProductComponent {
     @Input('product') product: Product;
     private itemCountInCart: number = 0;
     constructor(private cartService: CartService) {
 
     }
-    // ngOnChanges(changes: { [propKey: string]: SimpleChange }) {
-    //     console.log("change detected",changes);
-    // }
-    ngOnInit() {
 
+    ngOnInit() {
     }
     addToCart() {
         this.itemCountInCart++;
-        this.cartService.productSubAction(this.product);
+        this.product.productCount++;
+        this.cartService.productSubAction({ prod: this.product, flag: 'adding' });
     }
     removeFromCart() {
         if (this.itemCountInCart > 0)
             this.itemCountInCart--;
+        this.product.productCount--;
+        this.cartService.productSubAction({ prod: this.product, flag: 'removing' });
     }
     viewDetailedProduct() {
 

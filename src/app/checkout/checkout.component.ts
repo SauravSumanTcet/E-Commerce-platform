@@ -4,11 +4,11 @@ import { CartService } from '../dal/cart.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-    selector: 'app-cart',
-    templateUrl: './cart.component.html',
-    styleUrls: ['./cart.component.scss']
+    selector: 'app-checkout',
+    templateUrl: './checkout.component.html',
+    styleUrls: ['./checkout.component.scss']
 })
-export class CartComponent {
+export class CheckoutComponent {
     private cart: Cart;
     productListInCart: Product[] = [];
     private productAddedSubs: Subscription;

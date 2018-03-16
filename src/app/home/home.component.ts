@@ -14,18 +14,36 @@ export class HomeComponent implements OnInit {
   private userInSubs: Subscription;
   private user: any;
   private productList: any = [];
-  productListInCart: Product[] = [];
   constructor(private dal: DbAbstractionLayer, private cartService: CartService, private http: HttpClient) {
     this.userInSubs = this.dal.isUserIn().subscribe(user => {
       this.user = user;
-    });    
+    });
   }
 
   ngOnInit() {
     this.http.get(apiUrlList.getProducts).subscribe(data => {
       this.productList = data;
-    })
+      this.productList.map((el, i) => {
+        let _ = this.ifProdExistInCart(el.productId, i);
+        if (_[0]) {
+          return el.productCount = _[1];
+        } else {
+          return el.productCount = 0;
+        }
+      });
+    });
   }
+
+  ifProdExistInCart(prodId, index) {
+    let doExist = [false, 0];
+    this.cartService.productListInCart.forEach(el => {
+      if (el.productId == prodId) {
+        doExist = [true, el.productCount];
+      }
+    });
+    return doExist;
+  }
+
   ngOnDestroy() {
     this.userInSubs.unsubscribe();
   }

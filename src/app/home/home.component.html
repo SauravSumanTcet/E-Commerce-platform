@@ -8,28 +8,32 @@
     <app-product></app-product>
   </div>
 </ng-template> -->
-<nav class="product-filter">
-  <h2>Popular products</h2>
-  <div class="sort">
-    <div class="collection-sort">
-      <label>Filter by:</label>
-      <select>
-        <option value="/">All Jackets</option>
-      </select>
+<div class="home">
+  <!-- <nav class="product-filter">
+    <h2>Popular products</h2>
+    <div class="sort">
+      <div class="collection-sort">
+        <label>Filter by:</label>
+        <select>
+          <option value="/">All Jackets</option>
+        </select>
+      </div>
+      <div class="collection-sort">
+        <label>Sort by:</label>
+        <select>
+          <option value="/">Featured</option>
+        </select>
+      </div>
     </div>
-    <div class="collection-sort">
-      <label>Sort by:</label>
-      <select>
-        <option value="/">Featured</option>
-      </select>
-    </div>
-  </div>
-</nav>
-<section class="products">
-  <div *ngFor="let prod of productList" class="product-card">
+  </nav> -->
+  
+  <section class="products">
+    <div *ngFor="let prod of productList" class="product-card">
       <app-product [product]="prod"></app-product>
-  </div>
-</section>
+    </div>
+  </section>
+</div>
+
 <style>
   .product-filter {
     display: flex;

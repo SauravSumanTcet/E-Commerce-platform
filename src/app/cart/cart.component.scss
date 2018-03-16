@@ -1,0 +1,14 @@
+.top {
+    padding: 10px;
+}
+
+.item-list {
+    padding: 5%;
+    .item {
+        display: flex;
+
+        div {
+            width: 25%;
+        }
+    }
+}

@@ -6,19 +6,17 @@
     <h6>Rs.{{product.price}}</h6>
 </div>
 
-<ng-container *ngIf="itemCountInCart==0;else plusMinusBtn">
+<ng-container *ngIf="product.productCount==0;else addedView">
     <div class="add_to_cart" (click)="addToCart()">
         Add to Cart
     </div>
 </ng-container>
-<ng-template #plusMinusBtn>
+<ng-template #addedView>
     <div class="cart_actions">
-        <div class="left" (click)="addToCart()">
-            Add
+        <div class="left">
+            Added To Cart
         </div>
-        <div class="center">
-            Count:{{itemCountInCart}}
-        </div>
+
         <div class="right" (click)="removeFromCart()">
             Remove
         </div>
