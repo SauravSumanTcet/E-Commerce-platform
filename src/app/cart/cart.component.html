@@ -1,23 +1,63 @@
 <div class="top">
 
 </div>
-<div class="item-list">
-    <ng-container *ngIf="productListInCart.length==0;else itemsPresentInCart">
-        <div>
-            <a routerLink="/Home">Continue Shopping</a> with US to add items in your cart.
+
+<ng-container *ngIf="productListInCart.length==0;else itemsPresentInCart">
+    <div class="no-item">
+        <a routerLink="/Home">Continue Shopping</a> with US to add items in your cart.
+    </div>
+</ng-container>
+<ng-template #itemsPresentInCart>
+    <div class="shopping-cart">
+        <div class="item">
+            <div class="name">
+                Item
+            </div>
+            <div class="quantity">
+                Quantity
+            </div>
+            <div class="amt">
+                Amount
+            </div>
+            <div class="total">
+                Total
+            </div>
+            <div class="remove">
+
+            </div>
         </div>
-    </ng-container>
-    <ng-template #itemsPresentInCart>
-        <div *ngFor="let item of productListInCart" class="item">
-            <div>{{item.productName}}
+        <div *ngFor="let item of productListInCart;let prodIndex = index;" class="item">
+            <div class="name">{{item.productName}}
             </div>
-            <div>{{item.productCount}}
+            <div class="quantity">
+                <div class="count">
+                    {{item.productCount}}
+                </div>
+                <div class="plus" (click)="cartService.addToCart(item)">
+                    <i fa [name]="'plus'"></i>
+                </div>
+                <div class="minus" (click)="cartService.removeOneFromCart(item)">
+                    <i fa [name]="'minus'"></i>
+                </div>
             </div>
-            <div>{{item.price * item.productCount}}
+            <div class="amt">
+                &#x20b9;{{item.price}}
+            </div>
+            <div class="total">{{calculateTotalAmt(prodIndex)}}
+            </div>
+            <div class="remove" (click)="cartService.removeFromCart(item)">
+                <fa [name]="'trash'" [size]="2"></fa>
             </div>
         </div>
-        <a routerLink="/Home">Continue Shopping</a>
-        <a routerLink="/checkout">Checkout</a>
-    </ng-template>
-</div>
+        <div class="subtotal">
+            <div> Total&nbsp;Amount&nbsp;</div>
+            <div> {{calculateTotalAmt(-1)}} </div>
+        </div>
+    </div>
+    <div class="action-btns">
+        <button mat-button routerLink="/Home">Continue Shopping</button>
+        <button mat-button routerLink="/checkout">Checkout</button>
+    </div>
+</ng-template>
+
 <!-- productDesc rating -->

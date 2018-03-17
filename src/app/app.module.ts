@@ -18,13 +18,14 @@ import { ProductComponent } from './product/product.component';
 import { AuthGuard } from './auth.guard';
 import { AppService } from './app.service';
 import { DbAbstractionLayer } from './dal/db-abstraction-layer';
-import { HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './cart/cart.component';
 import { CartService } from './dal/cart.service';
 import { CommonService } from './dal/common.service';
 import { FooterComponent } from './footer/footer.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
 
 @NgModule({
   declarations: [
@@ -45,10 +46,13 @@ import { CheckoutComponent } from './checkout/checkout.component';
     Angular2FontawesomeModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgProgressModule
   ],
   entryComponents: [NavbarComponent, LoginComponent],
-  providers: [AppService, DbAbstractionLayer, AuthGuard, CartService, CommonService],
+  providers: [AppService, DbAbstractionLayer, AuthGuard, CartService, CommonService
+    , { provide: HTTP_INTERCEPTORS, useClass: NgProgressInterceptor, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

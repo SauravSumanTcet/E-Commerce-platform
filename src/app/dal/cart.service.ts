@@ -34,9 +34,29 @@ export class CartService {
             } else if (data.flag == 'removing') {
                 this.productListInCart = this.productListInCart.filter((item) => item.productId !== prod.productId);
             }
+            else if (data.flag == 'removingOne') {
+                this.productListInCart.map((obj) => {
+                    if (obj.productId == prod.productId) {
+                        productExistFlag = true;
+                        obj.productCount--;
+                    }
+                });
+            }
 
             localStorage.setItem('cart', JSON.stringify(this.productListInCart));
         });
     }
 
+    addToCart(product) {
+        this.productSubAction({ prod: product, flag: 'adding' });
+    }
+    removeOneFromCart(product) {
+        if(product.productCount==1){
+            this.productSubAction({ prod: product, flag: 'removing' });
+        }else
+        this.productSubAction({ prod: product, flag: 'removingOne' });
+    }
+    removeFromCart(product) {
+        this.productSubAction({ prod: product, flag: 'removing' });
+    }
 }

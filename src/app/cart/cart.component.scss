@@ -2,13 +2,86 @@
     padding: 10px;
 }
 
-.item-list {
+.no-item {
     padding: 5%;
+
+    div {
+        width: 25%;
+    }
+}
+
+.shopping-cart {
+    padding: 2%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    margin: 0 10%;
     .item {
         display: flex;
+        padding: 5px;
 
         div {
-            width: 25%;
+            width: 20%;
+            text-align: center;
         }
+
+        .quantity {
+            display: flex;
+
+            .count {
+                border-radius: 20px;
+                font-weight: bold;
+            }
+
+            .plus, .minus {
+                cursor: pointer;
+                padding-top: 4px;
+            }
+            .plus:hover, .minus:hover {
+                color: #ffffff;
+                background: black;
+            }
+        }
+        .remove{
+            color: #f26262;
+            cursor: pointer;
+        }
+        .remove:hover{
+            color: red;
+        }
+    }
+
+    .item:nth-child(1) {
+        font-weight: bold;
+        color: rgb(34, 202, 34);
+    }
+
+    .item:nth-child(even) {
+        background: rgba(0, 0, 0, 0.35);
+    }
+
+    .subtotal {
+        display: flex;
+        padding: 5px;
+        font-weight: bold;
+        color: blue;
+
+        div:nth-child(1) {
+            width: 60%;
+            text-align: right;
+        }
+
+        div:nth-child(2) {
+            width: 20%;
+            text-align: center;
+        }
+    }
+}
+
+.action-btns{
+    padding: 2%;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    margin: 10px 10%;
+    text-align: right;
+    a{
+        text-decoration: none;
     }
 }

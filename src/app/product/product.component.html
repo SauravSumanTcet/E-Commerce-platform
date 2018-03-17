@@ -1,32 +1,28 @@
-<div class="prod_image">
-    <img src="./../../../assets/img/no-img.png" (click)="viewDetailedProduct()">
-</div>
-<div class="product-info">
-    <h5>{{product.productName}}</h5>
-    <h6>Rs.{{product.price}}</h6>
-</div>
-
-<ng-container *ngIf="product.productCount==0;else addedView">
-    <div class="add_to_cart" (click)="addToCart()">
-        Add to Cart
+<div class="product">
+    <div class="prod_image">
+        <img src="./../../../assets/img/no-img.png" (click)="viewDetailedProduct()">
     </div>
-</ng-container>
-<ng-template #addedView>
-    <div class="cart_actions">
-        <div class="left">
-            Added To Cart
-        </div>
-
-        <div class="right" (click)="removeFromCart()">
-            Remove
-        </div>
+    <div class="product-info">
+        <h5>{{product.productName}}</h5>
+        <h6>&#x20b9;&nbsp;{{product.price}}</h6>
     </div>
-</ng-template>
 
-<!-- <div class="product-image">
-        <img src="assets/img/noimage.png">
-      </div>
-      <div class="product-info">
-        <h5>Winter Jacket</h5>
-        <h6>$99.99</h6>
-      </div> -->
+    <ng-container *ngIf="product.productCount==0;else addedView">
+        <div class="add_to_cart" (click)="addToCart()">
+            Add to Cart
+        </div>
+    </ng-container>
+    <ng-template #addedView>
+        <div class="cart_actions">
+            <div class="left">
+                Added To Cart
+            </div>
+
+            <div class="right">
+                <button mat-icon-button color="primary" (click)="removeFromCart()">
+                    <fa [name]="'trash-o'" [size]="2"></fa>
+                </button>
+            </div>
+        </div>
+    </ng-template>
+</div>

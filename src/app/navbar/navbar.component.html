@@ -4,10 +4,11 @@
     <span class="example-spacer"></span>
 
     <a routerLink="/cart" routerLinkActive="active">
-      <i fa [name]="'shopping-bag'" [size]="2" [pull]="'left'"></i>
-      <span class="item-count" [hidden]="productListInCart.length==0">{{productListInCart.length}}</span>
+      <i [ngClass]="{basket:productListInCart.length!=0}" fa [name]="'shopping-bag'" [size]="2" [pull]="'left'"></i>
+      <span class="item-count" [hidden]="productListInCart.length==0">
+        {{productListInCart.length}}
+      </span>
     </a>
-
 
     <ng-container *ngIf="(currentUser.isLogin); else guest">
       <i fa [name]="'user-circle'"></i> &nbsp;
