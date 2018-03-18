@@ -10,7 +10,7 @@ export class CartService {
     public productSub$ = this.productSub.asObservable();
     private productAddedSubs: Subscription;
     productListInCart: Product[] = [];
-
+    productsInResponse: Product[] = [];
     public productSubAction(data) {
         this.productSub.next(data);
     }
@@ -51,10 +51,10 @@ export class CartService {
         this.productSubAction({ prod: product, flag: 'adding' });
     }
     removeOneFromCart(product) {
-        if(product.productCount==1){
+        if (product.productCount == 1) {
             this.productSubAction({ prod: product, flag: 'removing' });
-        }else
-        this.productSubAction({ prod: product, flag: 'removingOne' });
+        } else
+            this.productSubAction({ prod: product, flag: 'removingOne' });
     }
     removeFromCart(product) {
         this.productSubAction({ prod: product, flag: 'removing' });

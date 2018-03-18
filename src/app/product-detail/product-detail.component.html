@@ -1,0 +1,53 @@
+<div class="product_page">
+    <div class="basic-product">
+        <div class="prod_image">
+            <img src="./../../../assets/img/no-img.png">
+        </div>
+        <div class="img_slider">
+            <img src="./../../../assets/img/no-img.png" (click)="viewDetailedProduct()">
+            <img src="./../../../assets/img/no-img.png" (click)="viewDetailedProduct()">
+        </div>
+    </div>
+    <div class="details">
+        <div class="product_info">
+            <h5>{{product.productName}}</h5>
+            <h6>&#x20b9;&nbsp;{{product.price}}</h6>
+        </div>
+        <div class="product_desc">
+            <p>
+                {{product.productDesc}}
+            </p>
+        </div>
+        <ng-container *ngIf="product.productCount==0;else addedView">
+            <button mat-raised-button color="primary" (click)="addToCart()">
+                <fa [name]="'credit-card-alt'" [size]="1"></fa>&nbsp;Buy
+            </button>
+            <!-- <div class="add_to_cart" (click)="addToCart()">
+                Add to Cart
+            </div> -->
+        </ng-container>
+        <ng-template #addedView>
+            <div class="cart_actions">
+                <div class="left">
+                    <mat-chip-list>
+
+                        <mat-chip color="accent" selected="true"> Added To Cart</mat-chip>
+                    </mat-chip-list>
+
+                </div>
+
+                <div class="right">
+                    <button mat-icon-button color="primary" (click)="removeFromCart()">
+                        <fa [name]="'trash-o'" [size]="2"></fa>
+                    </button>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+    <div class="extras">
+
+    </div>
+</div>
+<div class="rating_review">
+    <h1>Ratings & Reviews</h1>
+</div>

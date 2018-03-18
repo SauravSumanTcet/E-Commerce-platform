@@ -13,7 +13,7 @@ export class AppComponent {
   title = this.app.appName;
   constructor(private app: AppService, private dal: DbAbstractionLayer, private commonService: CommonService) {
   }
-  @HostListener('click', ['$event'])
+  // @HostListener('click', ['$event'])
   onClick(event) {
     console.log("click detected");
     //send subscriber notification that if cart is open then close it!!!

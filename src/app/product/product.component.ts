@@ -1,6 +1,7 @@
 import { Component, Input, OnChanges, SimpleChange } from '@angular/core';
 import { Product } from '../model/index';
 import { CartService } from '../dal/cart.service';
+import { Router, NavigationExtras } from '@angular/router';
 
 @Component({
     selector: 'app-product',
@@ -10,7 +11,7 @@ import { CartService } from '../dal/cart.service';
 export class ProductComponent {
     @Input('product') product: Product;
     private itemCountInCart: number = 0;
-    constructor(private cartService: CartService) {
+    constructor(private cartService: CartService, private router: Router) {
 
     }
 
@@ -23,11 +24,14 @@ export class ProductComponent {
     }
     removeFromCart() {
         if (this.itemCountInCart > 0)
-            this.itemCountInCart--;
-        this.product.productCount--;
+            this.itemCountInCart = 0;
+        this.product.productCount = 0;
         this.cartService.productSubAction({ prod: this.product, flag: 'removing' });
     }
     viewDetailedProduct() {
-
+        let navigationExtras: NavigationExtras = {
+            queryParams: { id: this.product.productId }
+        };
+        this.router.navigate(['productDetail'], navigationExtras);
     }
 }

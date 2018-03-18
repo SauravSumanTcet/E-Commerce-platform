@@ -9,46 +9,41 @@
   </div>
 </ng-template> -->
 <div class="home">
-  <!-- <nav class="product-filter">
-    <h2>Popular products</h2>
-    <div class="sort">
-      <div class="collection-sort">
-        <label>Filter by:</label>
-        <select>
-          <option value="/">All Jackets</option>
+  <div class="filter">
+    <h5>Filters</h5>
+    <mat-list>
+      <mat-list-item>
+        <select class="sort_by" (change)="setFilter($event.target.value)">
+          <option value="">Sort By</option>
+          <option value="1">
+            Price: High to Low
+          </option>
+          <option value="2">
+            Price: Low to High
+          </option>
+          <option value="3">
+            Fresh Arrivals
+          </option>
         </select>
-      </div>
-      <div class="collection-sort">
-        <label>Sort by:</label>
-        <select>
-          <option value="/">Featured</option>
-        </select>
-      </div>
-    </div>
-  </nav> -->
-  
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <mat-list>
+        <h3 matSubheader>Brand</h3>
+        <form [formGroup]="brandsFormGroup" (ngSubmit)="submit()">
+          <ng-container formArrayName="brands">
+            <mat-list-item *ngFor="let brand of [1,2,3];let i = index;">
+              <mat-checkbox (change)="submitSelectedBrands($event)" [value]="brand">Brand {{brand}}</mat-checkbox>
+            </mat-list-item>
+          </ng-container>
+          <button mat-raised-button color="primary" style="margin-left: 10px;">Apply</button>
+        </form>
+      </mat-list>
+    </mat-list>
+  </div>
+
   <section class="products">
     <div *ngFor="let prod of productList" class="product-card">
       <app-product [product]="prod"></app-product>
     </div>
   </section>
 </div>
-
-<style>
-  .product-filter {
-    display: flex;
-  }
-
-  .product-filter h2 {
-    flex-grow: 1;
-  }
-
-  .sort {
-    display: flex;
-  }
-
-  .collection-sort {
-    display: flex;
-    flex-direction: column;
-  }
-</style>

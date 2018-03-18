@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CustomMaterialModule } from './app-material.module';
 import { CustomNgBootstrapModule } from './app-ng-bootstrap.module';
@@ -26,6 +26,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
+import { ProductDetailComponent } from './product-detail/product-detail.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
     ProductComponent,
     CartComponent,
     CheckoutComponent,
+    ProductDetailComponent,
     FooterComponent
   ],
   imports: [
@@ -46,6 +48,7 @@ import { NgProgressModule, NgProgressInterceptor } from 'ngx-progressbar';
     Angular2FontawesomeModule,
     AppRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     NgProgressModule
   ],

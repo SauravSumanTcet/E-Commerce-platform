@@ -26,5 +26,61 @@
         "productName": "Product 4",
         "productDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut porta sem, vel convallis metus. In id dignissim mi. Nulla lobortis suscipit eros, sit amet efficitur felis fermentum ac. ",
         "price":500
+    },
+    {
+        "productId": "1x5",
+        "productCountAvailable": 10,
+        "productName": "Product 5",
+        "productDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut porta sem, vel convallis metus. In id dignissim mi. Nulla lobortis suscipit eros, sit amet efficitur felis fermentum ac. ",
+        "price":15
+    },
+    {
+        "productId": "1x6",
+        "productCountAvailable": 10,
+        "productName": "Product 6",
+        "productDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut porta sem, vel convallis metus. In id dignissim mi. Nulla lobortis suscipit eros, sit amet efficitur felis fermentum ac. ",
+        "price":10000
+    },
+    {
+        "productId": "1x7",
+        "productCountAvailable": 10,
+        "productName": "Product 7",
+        "productDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut porta sem, vel convallis metus. In id dignissim mi. Nulla lobortis suscipit eros, sit amet efficitur felis fermentum ac. ",
+        "price":900
+    },
+    {
+        "productId": "1x8",
+        "productCountAvailable": 10,
+        "productName": "Product 8",
+        "productDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut porta sem, vel convallis metus. In id dignissim mi. Nulla lobortis suscipit eros, sit amet efficitur felis fermentum ac. ",
+        "price":500
+    },
+    {
+        "productId": "1x9",
+        "productCountAvailable": 9,
+        "productName": "Product 9",
+        "productDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut porta sem, vel convallis metus. In id dignissim mi. Nulla lobortis suscipit eros, sit amet efficitur felis fermentum ac. ",
+        "price":900
+    },
+    {
+        "productId": "1x10",
+        "productCountAvailable": 1,
+        "productName": "Product 10",
+        "productDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut porta sem, vel convallis metus. In id dignissim mi. Nulla lobortis suscipit eros, sit amet efficitur felis fermentum ac. ",
+        "price":500
+    },
+    {
+        "productId": "1x11",
+        "productCountAvailable": 9,
+        "productName": "Product 11",
+        "productDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut porta sem, vel convallis metus. In id dignissim mi. Nulla lobortis suscipit eros, sit amet efficitur felis fermentum ac. ",
+        "price":900
+    },
+    {
+        "productId": "1x12",
+        "productCountAvailable": 1,
+        "productName": "Product 12",
+        "productDesc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ut porta sem, vel convallis metus. In id dignissim mi. Nulla lobortis suscipit eros, sit amet efficitur felis fermentum ac. ",
+        "price":500
     }
 ]
